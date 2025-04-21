@@ -162,11 +162,12 @@ Starting with log4jdbc 1.2 beta 2, you can also define any of these property set
 | log4jdbc.dump.booleanastruefalse | false | When dumping boolean values in SQL, dump them as 'true' or 'false'. If this option is not set, they will be dumped as 1 or 0 as many databases do not have a boolean type, and this allows for more portable sql dumping. | 1.2alpha1 |
 | log4jdbc.dump.sql.maxlinelength | 90 | When dumping SQL, if this is greater than 0, than the dumped SQL will be broken up into lines that are no longer than this value. Set this value to 0 if you don't want log4jdbc to try and break the SQL into lines this way. In future versions of log4jdbc, this will probably default to 0. | 1.2alpha1 |
 | log4jdbc.dump.fulldebugstacktrace | false | If dumping in debug mode, dump the full stack trace. This will result in EXTREMELY voluminous output, but can be very useful under some circumstances when trying to track down the call chain for generated SQL. | 1.2alpha1 |
-| log4jdbc.dump.sql.select | true | Set this to false to suppress SQL select statements in the output. | 1.2alpha1 |
-| log4jdbc.dump.sql.insert | true | Set this to false to suppress SQL insert statements in the output. | 1.2alpha1 |
-| log4jdbc.dump.sql.update | true | Set this to false to suppress SQL update statements in the output. | 1.2alpha1 |
-| log4jdbc.dump.sql.delete | true | Set this to false to suppress SQL delete statements in the output. | 1.2alpha1 |
-| log4jdbc.dump.sql.create | true | Set this to false to suppress SQL create statements in the output. | 1.2alpha1 |
+| log4jdbc.dump.sql.select | true | Set this to false to suppress SQL that starts with the word "select". | 1.2alpha1 |
+| log4jdbc.dump.sql.insert | true | Set this to false to suppress SQL that starts with the word "insert". | 1.2alpha1 |
+| log4jdbc.dump.sql.update | true | Set this to false to suppress SQL that starts with the word "update". | 1.2alpha1 |
+| log4jdbc.dump.sql.delete | true | Set this to false to suppress SQL that starts with the word "delete". | 1.2alpha1 |
+| log4jdbc.dump.sql.create | true | Set this to false to suppress SQL that starts with the word "create". | 1.2alpha1 |
+| log4jdbc.dump.sql.other | true | Set this to false to suppress SQL that starts with any other word besides "select","insert","update","delete" or "create". | 1.4 |
 | log4jdbc.dump.sql.addsemicolon | false | Set this to true to add an extra semicolon to the end of SQL in the output. This can be useful when you want to generate SQL from a program with log4jdbc in order to create a script to feed back into a database to run at a later time. | 1.2alpha1 |
 | log4jdbc.statement.warn | false | Set this to true to display warnings ([Why would you care?](https://arthurblake.wordpress.com/2009/02/26/log4jdbc-12-alpha-2-released/)) in the log when Statements are used in the log. NOTE, this was always true in releases previous to 1.2alpha2. It is false by default starting with release 1.2 alpha 2. | 1.2alpha2 |
 | log4jdbc.trim.sql | true | Set this to false to not trim the logged SQL. (Previous versions always trimmed the SQL.) | 1.2beta2 |

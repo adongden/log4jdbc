@@ -204,7 +204,7 @@ public class Slf4jSpyLogDelegator implements SpyLogDelegator
     // check shortcut property that is true if all the DumpSqlXXXXX
     // properties are also true (and thus don't need to be checked)
     // which should be the happy path in most cases
-    if (DriverSpy.DumpSqlFilteringOn)
+    if (!DriverSpy.DumpSqlFilteringOn)
     {
       return true;
     }
@@ -223,7 +223,15 @@ public class Slf4jSpyLogDelegator implements SpyLogDelegator
       (DriverSpy.DumpSqlInsert && "insert".equals(sql)) ||
       (DriverSpy.DumpSqlUpdate && "update".equals(sql)) ||
       (DriverSpy.DumpSqlDelete && "delete".equals(sql)) ||
-      (DriverSpy.DumpSqlCreate && "create".equals(sql));
+      (DriverSpy.DumpSqlCreate && "create".equals(sql)) ||
+      (
+        DriverSpy.DumpSqlOther &&
+        !"select".equals(sql) &&
+        !"insert".equals(sql) &&
+        !"update".equals(sql) &&
+        !"delete".equals(sql) &&
+        !"create".equals(sql)
+      );
   }
 
   /**

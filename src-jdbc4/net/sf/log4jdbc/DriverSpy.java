@@ -180,8 +180,9 @@ public class DriverSpy implements Driver
   static boolean DumpSqlUpdate;
   static boolean DumpSqlDelete;
   static boolean DumpSqlCreate;
+  static boolean DumpSqlOther;
 
-  // only true if one ore more of the above 4 flags are false.
+  // only true if one ore more of the above flags are false.
   static boolean DumpSqlFilteringOn;
 
   /**
@@ -405,9 +406,10 @@ public class DriverSpy implements Driver
     DumpSqlUpdate = getBooleanOption(props, "log4jdbc.dump.sql.update", true);
     DumpSqlDelete = getBooleanOption(props, "log4jdbc.dump.sql.delete", true);
     DumpSqlCreate = getBooleanOption(props, "log4jdbc.dump.sql.create", true);
+    DumpSqlOther  = getBooleanOption(props, "log4jdbc.dump.sql.other", true);
 
     DumpSqlFilteringOn = !(DumpSqlSelect && DumpSqlInsert && DumpSqlUpdate &&
-      DumpSqlDelete && DumpSqlCreate);
+      DumpSqlDelete && DumpSqlCreate && DumpSqlOther);
 
     DumpSqlAddSemicolon = getBooleanOption(props,
       "log4jdbc.dump.sql.addsemicolon", false);
